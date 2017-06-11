@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+    url : 'http://hmapps.healworld.co.kr/en/api/earth/deal/',
+    production: true
 };
