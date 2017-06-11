@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 
 import { DealsListComponent } from './deals-list.component';
@@ -11,11 +12,8 @@ describe('DealsListComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ DealsListComponent ],
             imports: [
-                AgmCoreModule.forRoot({
-                    apiKey: 'AIzaSyDRCEiyDSW4JsDxFe7bJ17w9cpnLljvEQA'
-                })
+                HttpModule
             ],
-
         })
             .compileComponents();
     }));
