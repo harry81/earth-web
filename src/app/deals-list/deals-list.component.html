@@ -1,3 +1,6 @@
 <p>
   deals-list works!
 </p>
+
+<button (click)="getDeals()"> Get Deals</button>
+<div *ngFor="let deal of deals">{{deal.id}} {{deal.bldg_nm}}</div>

@@ -30,7 +30,7 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
     browserConsoleLogOptions: {
-      level: 'log',
+      level: 'debug',
       format: '%b %T: %m',
       terminal: true
     }

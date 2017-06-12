@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
-import { Http, Response }          from '@angular/http';
 import { environment } from '../environments/environment';
 
 
@@ -9,19 +9,11 @@ export class DealsService {
 
     constructor (private http: Http) {}
 
-    getDeals() {
-        console.log('getDeals()');
-        return this.http.get(environment.url)
-            .map(res => res.json())
-            .subscribe(data => {
-                console.log(data);
-            })
-    }
 
-    private extractData(res: Response) {
-        console.log('res');
-        let body = res.json();
-        return body.data || { };
+    getDeals(deal_id?: string) {
+        console.log('deal_id', deal_id)
+        return this.http.get(environment.url)
+            .map(res => res.json());
     }
 
 }

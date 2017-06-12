@@ -17,4 +17,11 @@ describe('DealsService', () => {
     it('should be created', inject([DealsService], (service: DealsService) => {
         expect(service).toBeTruthy();
     }));
+
+    it('shoudl accept optional parameter', inject([DealsService], (service: DealsService) => {
+        service.getDeals();
+        service.getDeals('10000');
+
+        expect(service).toBeTruthy();
+    }));
 });

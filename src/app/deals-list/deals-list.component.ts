@@ -8,12 +8,22 @@ import { DealsService } from '../deals.service';
     providers: [DealsService]
 })
 export class DealsListComponent implements OnInit {
+    public deals = [];
 
     constructor(private _deals_service: DealsService) {
     }
 
     ngOnInit() {
-        this._deals_service.getDeals();
+    }
+
+    getDeals() {
+        console.log('get deals()');
+        this._deals_service.getDeals().subscribe(
+            (deals) => {
+                console.log('deals in DealsListcomponent', deals);
+                this.deals = deals.results;
+            }
+        );
     }
 
 
