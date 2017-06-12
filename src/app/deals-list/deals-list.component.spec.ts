@@ -94,7 +94,7 @@ describe('DealsListComponent', () => {
         });
 
         expect(component.deals.length).toBe(0);
-        component.getDeals();
+        component.getDeals('3');
         expect(component.deals.length).toBe(3);
     }));
 
