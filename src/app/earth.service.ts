@@ -18,7 +18,7 @@ export class EarthService {
 
     getLocations(location_id?: string) {
         console.log('location_id', location_id)
-        return this.http.get(environment.url, 'location/3/')
+        return this.http.get(environment.url + 'location/')
             .map(res => res.json());
     }
 }

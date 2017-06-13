@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from "@angular/router/testing";
 import { AgmCoreModule } from '@agm/core';
 import {
     HttpModule,
@@ -44,11 +45,6 @@ describe('DealsMapComponent', () => {
 
     it(`should have as title 'app'`, async(() => {
         expect(component.title).toEqual('HM earth');
-    }));
-
-    it('should render title in a h1 tag', async(() => {
-        const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h1').textContent).toContain('Welcome to HM earth!!');
     }));
 
 });
