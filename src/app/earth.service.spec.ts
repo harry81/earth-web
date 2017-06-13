@@ -1,12 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 
-import { DealsService } from './deals.service';
+import { EarthService } from './earth.service';
 
-describe('DealsService', () => {
+describe('EarthService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [DealsService],
+            providers: [EarthService],
             imports: [
                 HttpModule
             ],
@@ -14,11 +14,11 @@ describe('DealsService', () => {
         });
     });
 
-    it('should be created', inject([DealsService], (service: DealsService) => {
+    it('should be created', inject([EarthService], (service: EarthService) => {
         expect(service).toBeTruthy();
     }));
 
-    it('shoudl accept optional parameter', inject([DealsService], (service: DealsService) => {
+    it('shoudl accept optional parameter', inject([EarthService], (service: EarthService) => {
         service.getDeals();
         service.getDeals('10000');
 

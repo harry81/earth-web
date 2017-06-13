@@ -9,7 +9,7 @@ import {
     XHRBackend
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { DealsService } from '../deals.service';
+import { EarthService } from '../earth.service';
 import { DealsListComponent } from './deals-list.component';
 
 describe('DealsListComponent', () => {
@@ -74,7 +74,7 @@ describe('DealsListComponent', () => {
             declarations: [ DealsListComponent ],
             imports: [HttpModule, RouterTestingModule],
             providers: [
-                DealsService,
+                EarthService,
                 { provide: XHRBackend, useClass: MockBackend }
             ]
         }).compileComponents();

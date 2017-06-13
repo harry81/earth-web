@@ -5,7 +5,7 @@ import { environment } from '../environments/environment';
 
 
 @Injectable()
-export class DealsService {
+export class EarthService {
 
     constructor (private http: Http) {}
 
@@ -16,4 +16,9 @@ export class DealsService {
             .map(res => res.json());
     }
 
+    getLocations(location_id?: string) {
+        console.log('location_id', location_id)
+        return this.http.get(environment.url)
+            .map(res => res.json());
+    }
 }
