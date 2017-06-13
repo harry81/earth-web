@@ -1,5 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AgmCoreModule } from '@agm/core';
+import {
+    HttpModule,
+    Http,
+    Response,
+    ResponseOptions,
+    XHRBackend
+} from '@angular/http';
 
 import { DealsMapComponent } from './deals-map.component';
 
@@ -11,6 +18,7 @@ describe('DealsMapComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ DealsMapComponent ],
             imports: [
+                HttpModule, RouterTestingModule,
                 AgmCoreModule.forRoot({
                     apiKey: 'AIzaSyDRCEiyDSW4JsDxFe7bJ17w9cpnLljvEQA'
                 })

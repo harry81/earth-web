@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
 import { EarthService } from '../earth.service';
-import 'rxjs/add/operator/pluck';
 
 @Component({
     selector: 'app-earth-list',
