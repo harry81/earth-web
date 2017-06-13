@@ -11,9 +11,9 @@ import { DealsListComponent } from './deals-list/deals-list.component';
 
 
 const appRoutes: Routes = [
-  { path: 'map', component: DealsMapComponent },
-  { path: 'list/:location_id', component: DealsListComponent },
-  { path: '**', component: DealsMapComponent },
+    { path: 'map', component: DealsMapComponent,},
+    { path: 'list/:location_id', component: DealsListComponent },
+    { path: '**', component: DealsMapComponent },
 ];
 
 
@@ -24,7 +24,7 @@ const appRoutes: Routes = [
         DealsListComponent,
     ],
     imports: [
-        RouterModule.forRoot(appRoutes, { useHash: false }),
+        RouterModule.forRoot(appRoutes, { useHash: true }),
         BrowserModule,
         HttpModule,
         AgmCoreModule.forRoot({

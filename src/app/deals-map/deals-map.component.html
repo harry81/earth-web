@@ -14,7 +14,7 @@
       <agm-marker [latitude]=location.point.coordinates[1]
                   [longitude]=location.point.coordinates[0]>
         <agm-info-window>
-          {{location.rest}}
+          <a href="/#/list/{{location.id}}">{{location.dongmyun}}</a>
         </agm-info-window>
       </agm-marker>
     </div>
