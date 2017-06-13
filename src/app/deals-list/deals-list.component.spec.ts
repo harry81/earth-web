@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { RouterTestingModule } from "@angular/router/testing";
 import { AgmCoreModule } from '@agm/core';
 import {
     HttpModule,
@@ -71,7 +72,7 @@ describe('DealsListComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ DealsListComponent ],
-            imports: [HttpModule],
+            imports: [HttpModule, RouterTestingModule],
             providers: [
                 DealsService,
                 { provide: XHRBackend, useClass: MockBackend }
