@@ -30,7 +30,6 @@ export class DealsMapComponent implements OnInit {
         );
     }
 
-    title = 'HM earth';
     lat = 36.1148642;
     lng = 128.3389805;
     zoom = 13;

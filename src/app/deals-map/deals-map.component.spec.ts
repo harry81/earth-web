@@ -43,8 +43,4 @@ describe('DealsMapComponent', () => {
         expect(component).toBeTruthy();
     }));
 
-    it(`should have as title 'app'`, async(() => {
-        expect(component.title).toEqual('HM earth');
-    }));
-
 });
