@@ -10,6 +10,8 @@ import { EarthService } from '../earth.service';
 })
 export class DealsListComponent implements OnInit {
     public deals = [];
+    public lat: string;
+    public lng: string;
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
@@ -24,9 +26,11 @@ export class DealsListComponent implements OnInit {
 
     getDeals(location_id: string) {
         this._earth_service.getDeals(location_id).subscribe(
-            (deals) => {
-                console.log('earth in EarthListcomponent', deals);
-                this.deals = deals.results;
+            (response) => {
+                console.log('earth in EarthListcomponent', response);
+                this.deals = response.deals;
+                this.lat = response.point.coordinates[1];
+                this.lng = response.point.coordinates[0];
             }
         );
     }

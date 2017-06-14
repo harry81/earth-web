@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { environment } from '../environments/environment';
 
@@ -12,13 +12,12 @@ export class EarthService {
 
     getDeals(location_id?: string) {
         console.log('location_id', location_id)
-        return this.http.get(environment.url + 'deal/?location=' + location_id)
+        return this.http.get(environment.url + 'location/' + location_id + '/')
             .map(res => res.json());
     }
 
-    getLocations(location_id?: string) {
-        console.log('location_id', location_id)
-        return this.http.get(environment.url + 'location/')
+    getLocations(point) {
+        return this.http.get(environment.url + 'location/?dist=100&point=' + point['lng'] + ','+ point['lat'])
             .map(res => res.json());
     }
 }

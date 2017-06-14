@@ -10,6 +10,8 @@ import { EarthService } from '../earth.service';
 })
 export class DealsMapComponent implements OnInit {
     public locations = [];
+    public lat;
+    public lng;
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
@@ -17,20 +19,21 @@ export class DealsMapComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.getLocations(params['location_id'])
+        this.route.queryParams.subscribe(params => {
+            this.getLocations(params);
+            this.lat = parseFloat(params['lat']);
+            this.lng = parseFloat(params['lng']);
+            console.log(this.lat, this.lng);
         });
     }
 
-    getLocations(location_id: string) {
-        this._earth_service.getLocations(location_id).subscribe(
+    getLocations(point) {
+        this._earth_service.getLocations(point).subscribe(
             (locations) => {
                 this.locations = locations.results;
             }
         );
     }
 
-    lat = 36.1148642;
-    lng = 128.3389805;
     zoom = 13;
 }

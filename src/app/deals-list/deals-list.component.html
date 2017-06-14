@@ -1,5 +1,3 @@
-<p>
-  deals-list works!
-</p>
 
 <div *ngFor="let deal of deals">{{deal.id}} {{deal.bldg_nm}} {{deal.sum_amount}} {{deal.deal_yy}} {{deal.deal_mm}} {{deal.bldg_area}}</div>
+<a [routerLink]="['/map']" [queryParams]="{ lat: lat, lng:lng }">지도보기</a>
