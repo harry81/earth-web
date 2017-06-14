@@ -20,8 +20,16 @@ export class DealsMapComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
+
+            if (! params.hasOwnProperty('lat')) {
+                params = {};
+                params['lat'] = 37.5547125;
+                params['lng'] = 126.9685991;
+
+            }
+
             this.getLocations(params);
-            this.lat = parseFloat(params['lat']);
+            this.lat = parseFloat(params['lat']) ;
             this.lng = parseFloat(params['lng']);
             console.log(this.lat, this.lng);
         });

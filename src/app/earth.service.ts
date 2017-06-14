@@ -17,7 +17,7 @@ export class EarthService {
     }
 
     getLocations(point) {
-        return this.http.get(environment.url + 'location/?dist=100&point=' + point['lng'] + ','+ point['lat'])
+        return this.http.get(environment.url + 'location/?dist=0.1&point=' + point['lng'] + ','+ point['lat'])
             .map(res => res.json());
     }
 }
