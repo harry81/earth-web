@@ -1,2 +1,38 @@
-<div *ngFor="let deal of deals">{{deal.id}} {{deal.bldg_nm}} {{deal.sum_amount}} {{deal.deal_yy}} {{deal.deal_mm}} {{deal.bldg_area}}</div>
+<md-card class="example-card" >
+
+  <md-card-header>
+    <md-card-title>{{ location.name }}</md-card-title>
+  </md-card-header>
+
+  <md-card-subtitle>
+  </md-card-subtitle>
+
+  <md-card-content>
+    {{ location.address }}
+  </md-card-content>
+
+</md-card>
+
+
+<table width="100%">
+  <thead>
+    <tr>
+      <td>평수</td>
+      <td>거래액</td>
+      <td>층수</td>
+      <td>년</td>
+      <td>월</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let deal of location.deals">
+      <td> {{deal.bldg_area}}</td>
+      <td> {{deal.sum_amount}}</td>
+      <td> {{deal.aptfno}}</td>
+      <td> {{deal.deal_yy}}</td>
+      <td> {{deal.deal_mm}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <a [routerLink]="['/map']" [queryParams]="{ lat: lat, lng:lng }">지도보기</a>

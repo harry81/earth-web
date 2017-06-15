@@ -9,7 +9,7 @@ import { EarthService } from '../earth.service';
     providers: [EarthService]
 })
 export class DealsListComponent implements OnInit {
-    public deals = [];
+    public location: any = {};
     public lat: string;
     public lng: string;
 
@@ -28,7 +28,7 @@ export class DealsListComponent implements OnInit {
         this._earth_service.getDeals(location_id).subscribe(
             (response) => {
                 console.log('earth in EarthListcomponent', response);
-                this.deals = response.deals;
+                this.location = response;
                 this.lat = response.point.coordinates[1];
                 this.lng = response.point.coordinates[0];
             }

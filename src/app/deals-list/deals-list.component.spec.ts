@@ -8,6 +8,8 @@ import {
     ResponseOptions,
     XHRBackend
 } from '@angular/http';
+import { MdButtonModule, MdCardModule, MdListModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
+
 import { MockBackend } from '@angular/http/testing';
 import { EarthService } from '../earth.service';
 import { DealsListComponent } from './deals-list.component';
@@ -56,7 +58,14 @@ describe('DealsListComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ DealsListComponent ],
-            imports: [HttpModule, RouterTestingModule],
+            imports: [HttpModule,
+                      RouterTestingModule,
+                      MdMenuModule,
+                      MdCardModule,
+                      MdToolbarModule,
+                      MdIconModule,
+                      MdListModule
+                     ],
             providers: [
                 EarthService,
                 { provide: XHRBackend, useClass: MockBackend }
@@ -78,7 +87,7 @@ describe('DealsListComponent', () => {
             })));
         });
         component.getDeals("257");
-        expect(component.deals.length).toBe(1);
+        expect(component.location['deals'].length).toBe(1);
     }));
 
 });
