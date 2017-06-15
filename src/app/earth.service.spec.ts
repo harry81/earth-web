@@ -151,7 +151,7 @@ describe('EarthService', () => {
                       })));
                   });
 
-                  service.getLocations().subscribe((locations)=> {
+                  service.getLocations("12").subscribe((locations)=> {
                       expect(locations.results.length).toBe(3);
                   });
               }));

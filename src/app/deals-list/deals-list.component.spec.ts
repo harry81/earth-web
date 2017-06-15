@@ -17,56 +17,40 @@ describe('DealsListComponent', () => {
     let fixture: ComponentFixture<DealsListComponent>;
 
     let  mockResponse = {
-        "results": [
+        "address": "서울특별시 중구 남대문로5가 827",
+        "sido": "서울특별시",
+        "rest": "827",
+        "id": 1747,
+        "deals": [
             {
-                "location": null,
-                "aptfno": "1",
-                "area_cd": "47190",
-                "bobn": "1076-1",
-                "bldg_area": "47.44",
-                "id": 4003,
-                "sum_amount": 5000,
-                "bldg_yy": "1993",
-                "dong": "원평동",
-                "bldg_nm": "두산맨션",
+                "location": 1747,
+                "origin": "list/201702/list_201702_11140_서울특별시_중구.xml",
+                "aptfno": "21",
+                "area_cd": "11140",
+                "bobn": "827",
+                "bldg_area": "148.47",
+                "id": 8713,
+                "sum_amount": 131700,
+                "bldg_yy": "2010",
+                "dong": "남대문로5가",
+                "bldg_nm": "남산트라팰리스",
                 "deal_yy": "2017",
-                "deal_mm": "1",
+                "deal_mm": "2",
                 "deal_dd": "1~10"
-            },
-            {
-                "location": null,
-                "aptfno": "4",
-                "area_cd": "47190",
-                "bobn": "224",
-                "bldg_area": "84.95",
-                "id": 4009,
-                "sum_amount": 19500,
-                "bldg_yy": "2007",
-                "dong": "도량동",
-                "bldg_nm": "휴먼시아4단지",
-                "deal_yy": "2017",
-                "deal_mm": "1",
-                "deal_dd": "11~20"
-            },
-            {
-                "location": null,
-                "aptfno": "3",
-                "area_cd": "47190",
-                "bobn": "670",
-                "bldg_area": "70.44",
-                "id": 4015,
-                "sum_amount": 8400,
-                "bldg_yy": "1993",
-                "dong": "도량동",
-                "bldg_nm": "귀빈맨션",
-                "deal_yy": "2017",
-                "deal_mm": "1",
-                "deal_dd": "21~31"
             }
         ],
-        "previous": null,
-        "next": "http://localhost:8001/en/api/earth/deal/?limit=10&offset=10",
-        "count": 297
+        "name": "남산트라팰리스",
+        "point": {
+            "coordinates": [
+                126.9757836,
+                37.5538338
+            ],
+            "type": "Point"
+        },
+        "isRoadAddress": "False",
+        "country": "대한민국",
+        "sigugun": "중구",
+        "dongmyun": "남대문로5가"
     };
 
     beforeEach(async(() => {
@@ -93,10 +77,8 @@ describe('DealsListComponent', () => {
                 body: JSON.stringify(mockResponse)
             })));
         });
-
-        expect(component.deals.length).toBe(0);
-        component.getDeals('3');
-        expect(component.deals.length).toBe(3);
+        component.getDeals("257");
+        expect(component.deals.length).toBe(1);
     }));
 
 });

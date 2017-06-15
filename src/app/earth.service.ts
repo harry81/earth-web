@@ -11,7 +11,6 @@ export class EarthService {
 
 
     getDeals(location_id?: string) {
-        console.log('location_id', location_id)
         return this.http.get(environment.url + 'location/' + location_id + '/')
             .map(res => res.json());
     }
