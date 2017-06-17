@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
+import { MdDialog } from '@angular/material';
 import { EarthService } from '../earth.service';
+import { DealsListComponent } from '../deals-list/deals-list.component';
 
 @Component({
     selector: 'app-deals-map',
@@ -13,9 +15,12 @@ export class DealsMapComponent implements OnInit {
     public lat;
     public lng;
 
+    zoom = 13;
+
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                public dialog: MdDialog) {
     }
 
     ngOnInit() {
@@ -43,5 +48,15 @@ export class DealsMapComponent implements OnInit {
         );
     }
 
-    zoom = 13;
+    openDialog(location_id:string) {
+        let dialogRef = this.dialog.open(
+            DealsListComponent, {
+                data: {"location_id": location_id},
+                position: {"bottom": "10px"},
+            });
+
+        dialogRef.afterClosed().subscribe(result => {
+
+        });
+    }
 }

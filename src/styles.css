@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.section {
+    width: 95vw;
+    text-align:center
+}
+
+.element-center {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.sebm-google-map-container {
+    display: inline-block;
+    height: 80vh;
+    width: 95vw;
+}
+
+
+@media only screen and (min-width: 768px) {
+    body {
+        background-color: #f0edeb;
+    }
+
+    .sebm-google-map-container {
+        height: 70vh;
+        width: 70vw;
+    }
+
+    .section {
+        width: 50vw;
+    }
+}

@@ -1,13 +1,11 @@
-<div style="text-align:center">
-
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+<div style="text-align:center" class="element-center">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" hide-sm>
 
     <div *ngFor="let location of locations">
-      <agm-marker [latitude]=location.point.coordinates[1]
+      <agm-marker (markerClick)="openDialog(location.id)"
+                  [latitude]=location.point.coordinates[1]
                   [longitude]=location.point.coordinates[0]>
-        <agm-info-window>
-          <a href="/#/list/{{location.id}}">{{location.name}}</a>
-        </agm-info-window>
       </agm-marker>
     </div>
   </agm-map>
+</div>

@@ -3,7 +3,8 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCardModule, MdListModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
+import { MdDialogModule, MdButtonModule, MdCardModule, MdListModule, MdMenuModule,
+         MdToolbarModule, MdIconModule } from '@angular/material';
 
 import { HttpModule } from '@angular/http';
 
@@ -56,7 +57,8 @@ export function ResponsiveDefinition(){
         MdCardModule,
         MdToolbarModule,
         MdIconModule,
-        MdListModule
+        MdListModule,
+        MdDialogModule,
     ],
     providers: [
         {

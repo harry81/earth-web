@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { EarthService } from '../earth.service';
 
 @Component({
@@ -15,13 +16,16 @@ export class DealsListComponent implements OnInit {
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                public dialogRef: MdDialogRef<DealsListComponent>,
+                @Inject(MD_DIALOG_DATA) public data: any) {
     }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.getDeals(params['location_id'])
-        });
+        this.getDeals(this.data.location_id);
+        // this.route.params.subscribe(params => {
+        //     this.getDeals(params['location_id']);
+        // });
     }
 
     getDeals(location_id: string) {
