@@ -1,10 +1,15 @@
-<div style="text-align:center" class="element-center">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" hide-sm>
-
+<div class="element-center" style="top-margin:200px;">
+  Heal the world
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]=true>
     <div *ngFor="let location of locations">
-      <agm-marker (markerClick)="openDialog(location.id)"
+      <agm-marker (markerClick)="openDialog(location.id)" [visible]=false
                   [latitude]=location.point.coordinates[1]
                   [longitude]=location.point.coordinates[0]>
+
+        <agm-info-window [isOpen]=true>
+          <button (click)="openDialog(location.id)">{{location.name}}</button>
+        </agm-info-window>
+
       </agm-marker>
     </div>
   </agm-map>

@@ -23,15 +23,11 @@ export class DealsListComponent implements OnInit {
 
     ngOnInit() {
         this.getDeals(this.data.location_id);
-        // this.route.params.subscribe(params => {
-        //     this.getDeals(params['location_id']);
-        // });
     }
 
     getDeals(location_id: string) {
         this._earth_service.getDeals(location_id).subscribe(
             (response) => {
-                console.log('earth in EarthListcomponent', response);
                 this.location = response;
                 this.lat = response.point.coordinates[1];
                 this.lng = response.point.coordinates[0];

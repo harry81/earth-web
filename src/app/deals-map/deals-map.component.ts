@@ -52,7 +52,7 @@ export class DealsMapComponent implements OnInit {
         let dialogRef = this.dialog.open(
             DealsListComponent, {
                 data: {"location_id": location_id},
-                position: {"bottom": "10px"},
+                position: {"top": "16px"},
             });
 
         dialogRef.afterClosed().subscribe(result => {
