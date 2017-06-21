@@ -1,28 +1,39 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 .gm-style-iw + div {display: none;}
+
 .element-center {
     margin-left: auto;
     margin-right: auto;
-    display: table;
 }
 
 .sebm-google-map-container {
     height: 80vh;
-    width: 95vw;
+}
+
+.search-input-on-map {
+    height: 2em;
+    width: 300px;
+}
+
+agm-map { position: relative;}
+
+#layer-on-map {
+    width: 100vw;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    z-index: 99;
 }
 
 
 @media only screen and (min-width: 768px) {
-    body {
-        background-color: #f0edeb;
-    }
-
     .sebm-google-map-container {
         height: 70vh;
         width: 70vw;
     }
 
-    .section {
-        width: 50vw;
+    #layer-on-map {
+    width: 70vw;
     }
 }

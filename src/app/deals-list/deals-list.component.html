@@ -1,6 +1,7 @@
-<h2 md-dialog-title>{{ location.name }}</h2>
+<button (click)="goBack()">bo back</button>
+<h2 md-dialog-title>{{ locations.name }}</h2>
 <md-dialog-content>
-  {{ location.dongmyun }}
+  {{ locations.dongmyun }}
   <table width="100%">
     <thead>
       <tr>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let deal of location.deals">
+      <tr  *ngFor="let deal of locations.deals">
         <td> {{deal.bldg_area}}</td>
         <td> {{deal.sum_amount}}</td>
         <td> {{deal.aptfno}}</td>

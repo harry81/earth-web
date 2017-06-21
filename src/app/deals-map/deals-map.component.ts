@@ -16,14 +16,17 @@ export class DealsMapComponent implements OnInit {
     public lng;
 
     zoom = 13;
-
+    flagHideMap = false;
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
-                private router: Router,
-                public dialog: MdDialog) {
+                public dialog: MdDialog,
+                private router: Router) {
+    }
+    ngOnInit() {
+        console.log('ngOnInit locations', this.locations);
     }
 
-    ngOnInit() {
+    showMap() {
         this.route.queryParams.subscribe(params => {
 
             if (! params.hasOwnProperty('lat')) {
@@ -40,6 +43,15 @@ export class DealsMapComponent implements OnInit {
         });
     }
 
+    ngAfterContentInit() {
+        this.showMap()
+        console.log('ngAfterContentInit');
+    }
+
+    ngOnDestroy() {
+        console.log('ngOnDestroy');
+    }
+
     getLocations(point) {
         this._earth_service.getLocations(point).subscribe(
             (locations) => {
@@ -48,11 +60,16 @@ export class DealsMapComponent implements OnInit {
         );
     }
 
+    toggleMap() {
+        this.flagHideMap = !this.flagHideMap;
+    }
+
     openDialog(location_id:string) {
-        let dialogRef = this.dialog.open(
+       let dialogRef = this.dialog.open(
             DealsListComponent, {
                 data: {"location_id": location_id},
                 position: {"top": "16px"},
+                width: "100vw"
             });
 
         dialogRef.afterClosed().subscribe(result => {

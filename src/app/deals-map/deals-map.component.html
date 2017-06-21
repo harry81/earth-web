@@ -1,16 +1,31 @@
-<div class="element-center" style="top-margin:200px;">
-  Heal the world
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]=true>
-    <div *ngFor="let location of locations">
-      <agm-marker (markerClick)="openDialog(location.id)" [visible]=false
-                  [latitude]=location.point.coordinates[1]
-                  [longitude]=location.point.coordinates[0]>
+<div id="hm-map" [hidden]="flagHideMap">
+  <div class="element-center">
+    <button (click)="toggleMap()"> toggle </button>
 
-        <agm-info-window [isOpen]=true>
-          <button (click)="openDialog(location.id)">{{location.name}}</button>
-        </agm-info-window>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]=true>
+      <div *ngFor="let location of locations">
+        <agm-marker  [latitude]=location.point.coordinates[1]
+                     [longitude]=location.point.coordinates[0]>
 
-      </agm-marker>
+          <agm-info-window>
+            <a routerLink="{{location.id}}">{{location.name}}</a>
+          </agm-info-window>
+
+        </agm-marker>
+      </div>
+    </agm-map>
+
+        <div id="layer-on-map">
+        <input class="search-input-on-map element-center" type="text"/>
     </div>
-  </agm-map>
+
+
+
+  </div>
+</div>
+
+<div id="hm-list" [hidden]="!flagHideMap">
+  list
+  <button (click)="toggleMap()"> toggle </button>
+
 </div>

@@ -19,7 +19,7 @@ export class EarthService {
         let params = {};
         if (point) {
             params = {
-                "dist":3000,
+                "dist":1000,
                 "point": point['lng'] + ',' + point['lat'] }
         }
         return this.http.get(environment.url + 'location/', {"search": params})
