@@ -8,7 +8,7 @@
                      [longitude]=location.point.coordinates[0]>
 
           <agm-info-window>
-            <a routerLink="{{location.id}}">{{location.name}}</a>
+            <button (click)="toggleMap()"> {{location.name}} </button>
           </agm-info-window>
 
         </agm-marker>
@@ -19,13 +19,37 @@
         <input class="search-input-on-map element-center" type="text"/>
     </div>
 
-
-
   </div>
 </div>
 
 <div id="hm-list" [hidden]="!flagHideMap">
   list
-  <button (click)="toggleMap()"> toggle </button>
+  <button (click)="toggleMap()"> goback </button>
+
+  <h2 md-dialog-title>{{ locations.name }}</h2>
+  <md-dialog-content>
+    {{ locations.dongmyun }}
+    <table width="100%">
+      <thead>
+        <tr>
+          <td>평수</td>
+          <td>거래액</td>
+          <td>층수</td>
+          <td>년</td>
+          <td>월</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let deal of locations.deals">
+          <td> {{deal.bldg_area}}</td>
+          <td> {{deal.sum_amount}}</td>
+          <td> {{deal.aptfno}}</td>
+          <td> {{deal.deal_yy}}</td>
+          <td> {{deal.deal_mm}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </md-dialog-content>
 
 </div>
