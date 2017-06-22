@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { environment } from '../environments/environment';
+import { HMLocation } from "./app.component";
 
 
 @Injectable()
@@ -10,8 +11,9 @@ export class EarthService {
     constructor (private http: Http) {}
 
 
-    getDeals(location_id?: string) {
-        return this.http.get(environment.url + 'location/' + location_id + '/')
+    getDeals(location?: HMLocation) {
+        console.log('location at service', location);
+        return this.http.get(environment.url + 'location/' + location.id + '/')
             .map(res => res.json());
     }
 

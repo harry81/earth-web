@@ -17,6 +17,8 @@ export class DealsMapComponent implements OnInit {
 
     zoom = 13;
     flagHideMap = false;
+    location : any;
+
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
                 public dialog: MdDialog,
@@ -60,8 +62,12 @@ export class DealsMapComponent implements OnInit {
         );
     }
 
-    toggleMap() {
+    toggleMap(location) {
         this.flagHideMap = !this.flagHideMap;
+
+        if (location != undefined) {
+            this.location = location;
+        }
     }
 
     openDialog(location_id:string) {
