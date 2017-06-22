@@ -17,7 +17,7 @@ export class DealsListComponent implements OnInit {
     public lat: string;
     public lng: string;
 
-    @Input() selected_location: HMLocation;
+    @Input() selectedLocation: number;
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
@@ -26,7 +26,6 @@ export class DealsListComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('ngOnInit list', this.selected_location);
         this.route.params.subscribe(params => {
             let location_id = params['location_id'];
 
@@ -36,8 +35,8 @@ export class DealsListComponent implements OnInit {
         });
     }
 
-    getDeals(location: HMLocation) {
-        this._earth_service.getDeals(location).subscribe(
+    getDeals(location_id: number) {
+        this._earth_service.getDeals(location_id).subscribe(
             (response) => {
                 this.locations = response;
                 this.lat = response.point.coordinates[1];
@@ -51,9 +50,9 @@ export class DealsListComponent implements OnInit {
     }
 
     ngOnChanges() {
-        if (this.selected_location != undefined) {
-            console.log('ngOnChanges', this.selected_location);
-            this.getDeals(this.selected_location);
+        if (this.selectedLocation != undefined) {
+            console.log('ngOnChanges', this.selectedLocation);
+            this.getDeals(this.selectedLocation);
         }
     }
 }

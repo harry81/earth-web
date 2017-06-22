@@ -10,10 +10,9 @@ export class EarthService {
 
     constructor (private http: Http) {}
 
-
-    getDeals(location?: HMLocation) {
-        console.log('location at service', location);
-        return this.http.get(environment.url + 'location/' + location.id + '/')
+    getDeals(location_id: number) {
+        console.log('location at service--', location_id);
+        return this.http.get(environment.url + 'location/' + location_id + '/')
             .map(res => res.json());
     }
 

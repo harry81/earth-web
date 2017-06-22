@@ -3,6 +3,7 @@ import { Router, ActivatedRoute }   from '@angular/router';
 import { MdDialog } from '@angular/material';
 import { EarthService } from '../earth.service';
 import { DealsListComponent } from '../deals-list/deals-list.component';
+import { HMLocation } from "../app.component";
 
 @Component({
     selector: 'app-deals-map',
@@ -10,14 +11,16 @@ import { DealsListComponent } from '../deals-list/deals-list.component';
     styleUrls: ['./deals-map.component.css'],
     providers: [EarthService]
 })
+
 export class DealsMapComponent implements OnInit {
     public locations = [];
+
     public lat;
     public lng;
 
     zoom = 13;
     flagHideMap = false;
-    location : any;
+    public location_id : number = 10;
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
@@ -25,7 +28,7 @@ export class DealsMapComponent implements OnInit {
                 private router: Router) {
     }
     ngOnInit() {
-        console.log('ngOnInit locations', this.locations);
+        console.log('ngOnInit locations', this.locations, this.location_id);
     }
 
     showMap() {
@@ -62,11 +65,11 @@ export class DealsMapComponent implements OnInit {
         );
     }
 
-    toggleMap(location) {
+    toggleMap(location? : HMLocation) {
         this.flagHideMap = !this.flagHideMap;
 
         if (location != undefined) {
-            this.location = location;
+            this.location_id = location.id;
         }
     }
 

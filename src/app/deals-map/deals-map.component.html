@@ -20,10 +20,7 @@
   </div>
 </div>
 
-
-<div id="hm-list" [hidden]="!flagHideMap">
-  <button (click)="toggleMap()"> goback </button>
-
-  <app-earth-list [selected_location]="location"></app-earth-list>
-
+<div id="layer-on-map" [hidden]="!flagHideMap">
+  <button (click)="toggleMap()">go to map</button>
+  <app-earth-list [selectedLocation]="location_id">app-earth-list입니다.</app-earth-list>
 </div>

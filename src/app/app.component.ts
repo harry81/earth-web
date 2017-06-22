@@ -6,7 +6,7 @@ export class HMLocation {
     dongmyun: string;
     id: number;
     isRoadAddress: boolean;
-    name : string
+    name : string;
     point: any;
     rest: string;
     sido: string;
