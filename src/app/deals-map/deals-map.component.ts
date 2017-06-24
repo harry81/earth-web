@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 import { EarthService } from '../earth.service';
 import { DealsListComponent } from '../deals-list/deals-list.component';
 import { HMLocation } from "../app.component";
@@ -74,12 +74,14 @@ export class DealsMapComponent implements OnInit {
     }
 
     openDialog(location_id:string) {
-       let dialogRef = this.dialog.open(
-            DealsListComponent, {
-                data: {"location_id": location_id},
-                position: {"top": "16px"},
-                width: "100vw"
-            });
+        console.log('location', location_id);
+        const config = new MdDialogConfig();
+        config.width = "100%";
+        config.height = "100%";
+        config.data = {"location_id": location_id};
+
+        let dialogRef = this.dialog.open(
+            DealsListComponent,  config);
 
         dialogRef.afterClosed().subscribe(result => {
 

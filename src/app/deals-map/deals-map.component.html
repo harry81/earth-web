@@ -1,12 +1,12 @@
 <div id="hm-map" [hidden]="flagHideMap">
   <div class="element-center">
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]=true>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
       <div *ngFor="let location of locations">
         <agm-marker  [latitude]=location.point.coordinates[1]
                      [longitude]=location.point.coordinates[0]>
 
           <agm-info-window>
-            <button (click)="toggleMap(location)"> {{location.name}} </button>
+            <button (click)="openDialog(location.id)"> {{location.name}} </button>
           </agm-info-window>
 
         </agm-marker>
@@ -18,9 +18,4 @@
     </div>
 
   </div>
-</div>
-
-<div id="layer-on-map" [hidden]="!flagHideMap">
-  <button (click)="toggleMap()">go to map</button>
-  <app-earth-list [selectedLocation]="location_id">app-earth-list입니다.</app-earth-list>
 </div>

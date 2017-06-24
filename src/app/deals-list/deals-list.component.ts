@@ -22,17 +22,30 @@ export class DealsListComponent implements OnInit {
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
                 private router: Router,
+                public dialogRef: MdDialogRef<DealsListComponent>,
+                @Inject(MD_DIALOG_DATA) public data: any,
                 private location: Location) {
     }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            let location_id = params['location_id'];
+        console.log('dialogRef', this.dialogRef);
+        console.log('data', this.data);
 
-            if (location_id) {
-                this.getDeals(location_id);
-            }
-        });
+        if (this.data) {
+            this.getDeals(this.data['location_id']);
+        }
+
+        else {
+            this.route.params.subscribe(params => {
+                let location_id = params['location_id'];
+                console.log('location id', location_id);
+
+                if (location_id) {
+                    this.getDeals(location_id);
+                }
+            });
+        }
+
     }
 
     getDeals(location_id: number) {
@@ -55,4 +68,14 @@ export class DealsListComponent implements OnInit {
             this.getDeals(this.selectedLocation);
         }
     }
+
+    closeDialog(data?: any) {
+        if(data === null) {
+            this.dialogRef.close();
+            return ;
+        }
+
+        this.dialogRef.close(data);
+    }
+
 }
