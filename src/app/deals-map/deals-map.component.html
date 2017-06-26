@@ -1,21 +1,19 @@
-<div id="hm-map" [hidden]="flagHideMap">
-  <div class="element-center">
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-      <div *ngFor="let location of locations">
-        <agm-marker  [latitude]=location.point.coordinates[1]
-                     [longitude]=location.point.coordinates[0]>
+<div class="element-center">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <div *ngFor="let location of locations">
+      <agm-marker  [latitude]=location.point.coordinates[1]
+                   [longitude]=location.point.coordinates[0]>
 
-          <agm-info-window>
-            <button (click)="openDialog(location.id)"> {{location.name}} </button>
-          </agm-info-window>
+        <agm-info-window>
+          <button (click)="openDialog(location.id)"> {{location.name}} </button>
+        </agm-info-window>
 
-        </agm-marker>
-      </div>
-    </agm-map>
-
-    <div id="layer-on-map">
-      <input class="search-input-on-map element-center" type="text"/>
+      </agm-marker>
     </div>
+  </agm-map>
 
+  <div id="layer-on-map">
+    <input class="search-input-on-map element-center" type="text"/>
   </div>
+
 </div>

@@ -9,7 +9,7 @@ $layout-breakpoint-sm:     960px !default;
 }
 
 .sebm-google-map-container {
-    height: 80vh;
+    height: 100vh;
 }
 
 .search-input-on-map {
@@ -33,16 +33,7 @@ agm-map { position: relative;}
 }
 
 @media only screen and (min-width: 768px) {
-    .sebm-google-map-container {
-        height: 70vh;
-        width: 70vw;
-    }
-
-    #layer-on-map {
-        width: 70vw;
-    }
-
     .mat-dialog-container {
-        max-width: 80vw!important;
+        max-width: 40vw!important;
     }
 }

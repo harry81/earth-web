@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
 import { MdDialog, MdDialogConfig } from '@angular/material';
+import {Location} from '@angular/common';
 import { EarthService } from '../earth.service';
 import { DealsListComponent } from '../deals-list/deals-list.component';
 import { HMLocation } from "../app.component";
@@ -19,16 +20,17 @@ export class DealsMapComponent implements OnInit {
     public lng;
 
     zoom = 13;
-    flagHideMap = false;
     public location_id : number = 10;
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
                 public dialog: MdDialog,
+                private location: Location,
                 private router: Router) {
     }
     ngOnInit() {
         console.log('ngOnInit locations', this.locations, this.location_id);
+
     }
 
     showMap() {
@@ -46,11 +48,24 @@ export class DealsMapComponent implements OnInit {
             this.lng = parseFloat(params['lng']);
             console.log(this.lat, this.lng);
         });
+
+        setTimeout(() => {
+            this.route.params.subscribe(params => {
+                let location_id = params['location_id'];
+                console.log('location id', params['location_id']);
+
+                if (params['location_id'] != undefined) {
+                    this.openDialog(params['location_id']);
+                }
+            });
+        }, 1);
+
+
+
     }
 
     ngAfterContentInit() {
         this.showMap()
-        console.log('ngAfterContentInit');
     }
 
     ngOnDestroy() {
@@ -65,14 +80,6 @@ export class DealsMapComponent implements OnInit {
         );
     }
 
-    toggleMap(location? : HMLocation) {
-        this.flagHideMap = !this.flagHideMap;
-
-        if (location != undefined) {
-            this.location_id = location.id;
-        }
-    }
-
     openDialog(location_id:string) {
         console.log('location', location_id);
         const config = new MdDialogConfig();
@@ -84,7 +91,7 @@ export class DealsMapComponent implements OnInit {
             DealsListComponent,  config);
 
         dialogRef.afterClosed().subscribe(result => {
-
+            this.location.replaceState("/map");
         });
     }
 }

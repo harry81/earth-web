@@ -15,10 +15,8 @@ import { DealsListComponent } from './deals-list/deals-list.component';
 
 
 const appRoutes: Routes = [
-    { path: 'map', component: DealsMapComponent,
-      children : [{
-          path: ':location_id', component: DealsListComponent
-          },]},
+    { path: 'map', component: DealsMapComponent,},
+    { path: 'map/:location_id', component: DealsMapComponent },
     { path: 'list/:location_id', component: DealsListComponent },
     { path: '**', component: DealsMapComponent },
 ];

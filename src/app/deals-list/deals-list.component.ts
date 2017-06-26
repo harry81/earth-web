@@ -32,7 +32,10 @@ export class DealsListComponent implements OnInit {
         console.log('data', this.data);
 
         if (this.data) {
-            this.getDeals(this.data['location_id']);
+            let location_id = this.data['location_id'];
+            this.getDeals(location_id);
+            console.log('map - ', location_id);
+            this.location.replaceState("/map/" + location_id);
         }
 
         else {
