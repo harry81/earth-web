@@ -32,6 +32,14 @@ agm-map { position: relative;}
     padding: 0px!important;
 }
 
+md-toolbar.mat-toolbar {
+    padding-left: 0px;
+}
+
+button.mat-button {
+    padding-left: 0px;
+}
+
 @media only screen and (min-width: 768px) {
     .mat-dialog-container {
         max-width: 40vw!important;
