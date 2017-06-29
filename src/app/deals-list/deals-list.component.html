@@ -1,11 +1,12 @@
 <md-toolbar>
-  <button md-button (click)="closeDialog()">
+  <a md-button (click)="closeDialog()">
     <i class="material-icons">keyboard_backspace</i>
-  </button>
+  </a>
+  <h2 md-dialog-title>{{ locations.bldg_nm }}</h2>
 </md-toolbar>
 
-<div >
-  <h2 md-dialog-title>{{ locations.name }}</h2>
+<div class="list-wrapper">
+
   <md-dialog-content>
     {{ locations.dongmyun }}
     <table width="100%">

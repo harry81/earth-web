@@ -36,8 +36,13 @@ md-toolbar.mat-toolbar {
     padding-left: 0px;
 }
 
-button.mat-button {
-    padding-left: 0px;
+.list-wrapper {
+    padding: 16px;
+}
+
+a.mat-button {
+    padding: 0px;
+    min-width: 56px;
 }
 
 @media only screen and (min-width: 768px) {
