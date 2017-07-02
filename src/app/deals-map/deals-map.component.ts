@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute }   from '@angular/router';
 import { MdDialog, MdDialogConfig } from '@angular/material';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { EarthService } from '../earth.service';
 import { DealsListComponent } from '../deals-list/deals-list.component';
 import { HMLocation } from "../app.component";
@@ -22,6 +22,9 @@ export class DealsMapComponent implements OnInit {
     zoom = 13;
     public location_id : number = 10;
 
+    private markerList = {};
+    private select_location;
+
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
                 public dialog: MdDialog,
@@ -30,7 +33,6 @@ export class DealsMapComponent implements OnInit {
     }
     ngOnInit() {
         console.log('ngOnInit locations', this.locations, this.location_id);
-
     }
 
     showMap() {
@@ -59,8 +61,6 @@ export class DealsMapComponent implements OnInit {
                 }
             });
         }, 1);
-
-
 
     }
 
@@ -94,4 +94,11 @@ export class DealsMapComponent implements OnInit {
             this.location.replaceState("/map");
         });
     }
+
+    // https://github.com/KrisToe4/cpsdata/blob/bb65a77eda873b4701366ce3c985c307bbd87ea1/client/src/app/map/map-viewport/map-viewport.component.ts
+    markerClicked(location){
+        this.select_location = location;
+        console.log('marker clicked', this.select_location);
+    }
+
 }

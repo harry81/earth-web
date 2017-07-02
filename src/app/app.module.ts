@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdDialogModule, MdButtonModule, MdCardModule, MdListModule, MdMenuModule,
@@ -47,6 +48,7 @@ export function ResponsiveDefinition(){
     imports: [
         ResponsiveModule,
         RouterModule.forRoot(appRoutes, { useHash: true }),
+        NgxDatatableModule,
         BrowserModule,
         HttpModule,
         AgmCoreModule.forRoot({

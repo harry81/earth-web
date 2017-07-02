@@ -19,6 +19,20 @@ export class DealsListComponent implements OnInit {
 
     @Input() selectedLocation: number;
 
+
+    rows = [
+        { name: 'Austin', gender: 'Male', company: 'Swimlane' },
+        { name: 'Dany', gender: 'Male', company: 'KFC' },
+        { name: 'Molly', gender: 'Female', company: 'Burger King' },
+    ];
+    columns = [
+        { prop: 'name' },
+        { name: 'Gender' },
+        { name: 'Company' }
+    ];
+
+
+
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
                 private router: Router,
