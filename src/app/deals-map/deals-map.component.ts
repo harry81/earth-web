@@ -101,4 +101,9 @@ export class DealsMapComponent implements OnInit {
         console.log('marker clicked', this.select_location);
     }
 
+    mapClick() {
+        console.log('map click');
+        this.select_location = null;
+    }
+
 }

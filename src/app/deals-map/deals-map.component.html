@@ -1,15 +1,18 @@
 <div class="element-center">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="mapClick()">
 
     <div *ngFor="let location of locations">
 
       <agm-marker (markerClick)="markerClicked(location)"
                   [latitude]=location.point.coordinates[1]
-                  [longitude]=location.point.coordinates[0]>
+                  [longitude]=location.point.coordinates[0]
+                  [visible]="false">
 
-        <agm-info-window [isOpen]="location == select_location">
-          <button (click)="openDialog(location.id)"> {{location.bldg_nm}} </button>
-        </agm-info-window>
+        <agm-info-window [isOpen]="true"
+                         [latitude]=location.point.coordinates[1]
+                         [longitude]=location.point.coordinates[0]>
+          <button md-button (click)="openDialog(location.id)"> {{location.bldg_nm}} </button>
+      </agm-info-window>
 
       </agm-marker>
     </div>

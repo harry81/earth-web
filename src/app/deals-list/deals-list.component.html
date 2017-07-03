@@ -12,20 +12,18 @@
     <table width="100%" class="display responsive-table">
       <thead>
         <tr>
+          <td>기간</td>
           <td>평수</td>
           <td>거래액</td>
-          <td>층수</td>
-          <td>년</td>
-          <td>월</td>
+          <td>층</td>
         </tr>
       </thead>
       <tbody>
         <tr  *ngFor="let deal of locations.deals">
+          <td> {{deal.deal_yy}}.{{deal.deal_mm}}</td>
           <td> {{deal.bldg_area}}</td>
           <td> {{deal.sum_amount}}</td>
           <td> {{deal.aptfno}}</td>
-          <td> {{deal.deal_yy}}</td>
-          <td> {{deal.deal_mm}}</td>
         </tr>
       </tbody>
     </table>

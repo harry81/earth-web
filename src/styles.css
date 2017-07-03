@@ -45,28 +45,30 @@ md-toolbar.mat-toolbar {
     padding: 16px;
 }
 
-a.mat-button {
-    padding: 0px;
+button.mat-button {
     min-width: 56px;
 }
+
+.gm-style-iw {
+    padding: 0px!important;
+    margin: 0px!important;
+}
+
+.gm-style-iw + div {display: none;}
 
 /* table  */
 table.display{
     margin: 1em 0;
     font-size: 0.8em;
 }
+
 table.display th,
 table.display td{
-    border: 1px solid #B3BFAA;
     padding: .5em 1em;
 }
 
 table.display th{ background: #D5E0CC; }
 table.display td{ background: #fff; }
-
-table.responsive-table{
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
 
 
 @media only screen and (min-width: 768px) {
