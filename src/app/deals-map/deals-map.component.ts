@@ -19,7 +19,10 @@ export class DealsMapComponent implements OnInit {
     public lat;
     public lng;
 
-    zoom = 13;
+    public lat_now;
+    public lng_now;
+
+    zoom = 16;
     public location_id : number = 10;
 
     private markerList = {};
@@ -44,8 +47,8 @@ export class DealsMapComponent implements OnInit {
                 params['lng'] = 126.9685991;
 
             }
-
             this.getLocations(params);
+
             this.lat = parseFloat(params['lat']) ;
             this.lng = parseFloat(params['lng']);
             console.log(this.lat, this.lng);
@@ -102,8 +105,23 @@ export class DealsMapComponent implements OnInit {
     }
 
     mapClick() {
-        console.log('map click');
         this.select_location = null;
+    }
+
+    centerChange($event ) {
+        this.lat_now = $event.lat;
+        this.lng_now = $event.lng;
+
+    }
+
+    refreshLocation() {
+        let params = {};
+
+        params['lat'] = this.lat_now;
+        params['lng'] = this.lng_now;
+
+        console.log('params', params);
+        this.getLocations(params);
     }
 
 }

@@ -19,7 +19,7 @@ $layout-breakpoint-sm:     960px !default;
 
 .search-input-on-map {
     height: 2em;
-    width: 300px;
+    width: 280px;
 }
 
 agm-map { position: relative;}

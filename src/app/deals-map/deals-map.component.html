@@ -1,5 +1,7 @@
 <div class="element-center">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="mapClick()">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"
+           (mapClick)="mapClick()"
+           (centerChange)="centerChange($event)">
 
     <div *ngFor="let location of locations">
 
@@ -20,6 +22,9 @@
 
   <div id="layer-on-map">
     <input class="search-input-on-map element-center" type="text"/>
+    <button  (click)="refreshLocation()">
+      <i class="material-icons">refresh</i>
+    </button>
   </div>
 
 </div>
