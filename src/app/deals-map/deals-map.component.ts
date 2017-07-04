@@ -78,7 +78,13 @@ export class DealsMapComponent implements OnInit {
     getLocations(point) {
         this._earth_service.getLocations(point).subscribe(
             (locations) => {
-                this.locations = locations.results;
+
+                for (let location of locations.results) {
+                    if (! this.locations.includes(location)) {
+                        console.log('ele', location);
+                        this.locations.push(location);
+                    }
+                }
             }
         );
     }
@@ -108,9 +114,14 @@ export class DealsMapComponent implements OnInit {
         this.select_location = null;
     }
 
-    centerChange($event ) {
-        this.lat_now = $event.lat;
-        this.lng_now = $event.lng;
+    centerChange($evt) {
+        this.lat_now = $evt.lat;
+        this.lng_now = $evt.lng;
+
+    }
+
+    boundsChange($event) {
+        console.log('$event', $event);
 
     }
 
