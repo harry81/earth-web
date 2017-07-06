@@ -6,6 +6,7 @@ import { EarthService } from '../earth.service';
 import { DealsListComponent } from '../deals-list/deals-list.component';
 import { HMLocation } from "../app.component";
 
+
 @Component({
     selector: 'app-deals-map',
     templateUrl: './deals-map.component.html',
@@ -19,14 +20,16 @@ export class DealsMapComponent implements OnInit {
     public lat;
     public lng;
 
-    public lat_now;
-    public lng_now;
+    public lat_of_map;
+    public lng_of_map;
 
     zoom = 16;
     public location_id : number = 10;
 
     private markerList = {};
     private select_location;
+
+    whenPositionGet = new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject));
 
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
@@ -51,7 +54,7 @@ export class DealsMapComponent implements OnInit {
 
             this.lat = parseFloat(params['lat']) ;
             this.lng = parseFloat(params['lng']);
-            console.log(this.lat, this.lng);
+            console.log('this', this.lat, this.lng);
         });
 
         setTimeout(() => {
@@ -76,6 +79,7 @@ export class DealsMapComponent implements OnInit {
     }
 
     getLocations(point) {
+        console.log('getLocations', point);
         this._earth_service.getLocations(point).subscribe(
             (locations) => {
 
@@ -115,8 +119,8 @@ export class DealsMapComponent implements OnInit {
     }
 
     centerChange($evt) {
-        this.lat_now = $evt.lat;
-        this.lng_now = $evt.lng;
+        this.lat_of_map = $evt.lat;
+        this.lng_of_map = $evt.lng;
 
     }
 
@@ -125,14 +129,30 @@ export class DealsMapComponent implements OnInit {
 
     }
 
-    refreshLocation() {
+    moveCurrentPosition(position: any) {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+    }
+
+    getLocation () {
         let params = {};
 
-        params['lat'] = this.lat_now;
-        params['lng'] = this.lng_now;
+        params['lat'] = this.lat_of_map;
+        params['lng'] = this.lng_of_map;
 
         console.log('params', params);
         this.getLocations(params);
     }
 
+    clickHere () {
+        this.whenPositionGet.then(
+            (position: Position) => {
+                console.log("Latitude " + position.coords.latitude, "Longitude " + position.coords.longitude);
+                this.moveCurrentPosition(position);
+            },
+            (error: PositionError) => {
+                console.error(error);
+            }
+        );
+    }
 }
