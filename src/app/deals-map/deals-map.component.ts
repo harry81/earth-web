@@ -125,13 +125,12 @@ export class DealsMapComponent implements OnInit {
     }
 
     boundsChange($event) {
-        console.log('$event', $event);
-
+        // console.log('$event', $event);
     }
 
     moveCurrentPosition(position: any) {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
+        this.lat = position.coords.latitude + Math.random() * 0.000000000001;
+        this.lng = position.coords.longitude + Math.random() * 0.000000000001;
     }
 
     getLocation () {
