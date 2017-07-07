@@ -29,8 +29,6 @@ export class DealsMapComponent implements OnInit {
     private markerList = {};
     private select_location;
 
-    whenPositionGet = new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject));
-
     constructor(private _earth_service: EarthService,
                 private route: ActivatedRoute,
                 public dialog: MdDialog,
@@ -144,7 +142,9 @@ export class DealsMapComponent implements OnInit {
     }
 
     clickHere () {
-        this.whenPositionGet.then(
+        let whenPositionGet = new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject));
+
+        whenPositionGet.then(
             (position: Position) => {
                 console.log("Latitude " + position.coords.latitude, "Longitude " + position.coords.longitude);
                 this.moveCurrentPosition(position);
