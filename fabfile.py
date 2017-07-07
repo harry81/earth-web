@@ -10,7 +10,8 @@ frontend_url = os.environ.get("FRONTEND_URL", "earth.healworld.co.kr")
 sync_conf = {
     "bundle_path": "dist",
     "bucket_name": frontend_url,
-    "user_profile": "pointer",
+    "distribution-id": "E1S2MCGWY8L37M",
+    "user_profile": "hmapps",
     "region": "ap-northeast-2"}
 
 
@@ -46,17 +47,16 @@ def run_invalidate():
 
     local("aws cloudfront create-invalidation"
           " --invalidation-batch file://invbatch.json"
-          " --distribution-id E1S2MCGWY8L37M"
-          " --profile {user_profile}"
+          " --distribution-id {distribution-id}"
+          " --profile pointer"
           " --region {region}".format(**sync_conf))
     print("## Deployment is done successfully, open your browser and see http://%s" % frontend_url)
 
 
 def deploy(build=True, invalidate=True):
-    import ipdb; ipdb.set_trace()
     check()
 
-    if build:
+    if build==True:
         run_build()
 
     local("aws s3 sync {bundle_path} s3://{bucket_name}/"
